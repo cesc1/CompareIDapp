@@ -1,0 +1,13 @@
+# History files
+.Rhistory
+
+# Session Data files
+.RData
+.RDataTmp
+
+# Render README
+README.Rmd
+
+# RStudio files
+*.Rproj.user/
+.Rproj.user
