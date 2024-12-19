@@ -1,25 +1,27 @@
+# File imports
 box::use(
-  shiny[bootstrapPage, div, moduleServer, NS, renderUI, tags, uiOutput],
+  app/view/load_data,
+  app/view/theme[my_theme],
 )
+# Package imports
+box::use(
+  shiny[moduleServer, NS, bootstrapPage, tags, HTML],
+  #DT[dataTableOutput, renderDataTable],
+)
+
 
 #' @export
 ui <- function(id) {
   ns <- NS(id)
   bootstrapPage(
-    uiOutput(ns("message"))
+    theme = my_theme,
+    load_data$ui(ns("load_data"))
   )
 }
 
 #' @export
 server <- function(id) {
   moduleServer(id, function(input, output, session) {
-    output$message <- renderUI({
-      div(
-        style = "display: flex; justify-content: center; align-items: center; height: 100vh;",
-        tags$h1(
-          tags$a("Check out Rhino docs!", href = "https://appsilon.github.io/rhino/")
-        )
-      )
-    })
+    data_list <- load_data$server("load_data")
   })
 }
