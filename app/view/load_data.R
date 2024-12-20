@@ -16,7 +16,7 @@ ui <- function(id) {
   ns <- NS(id)
   tagList(
     tags$div(class = "container",
-      tags$h2(class = "text-center", "Load data"),
+      tags$h2(class = "text-center", "Load both datasets"),
       # Extra padding on the top, to offset fileInput extra bottom padding (loading bar)
       tags$div(class = "row justify-content-around m-3 pt-4 bg-light border",
         tags$div(class = "col-5",
