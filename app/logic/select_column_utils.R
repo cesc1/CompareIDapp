@@ -3,6 +3,7 @@ box::use(
   shiny[HTML],
 )
 
+#' @export
 show_input_text <- function(data, col_name) {
   if (is.null(col_name)) {
     HTML(

@@ -1,9 +1,9 @@
 box::use(
-  bslib[bs_theme, bs_add_rules],
+  bslib[bs_add_rules, bs_theme],
   sass[sass_file],
 )
 
 # Load bslib basic theme and primary variable
 #' @export
-my_theme <- bslib::bs_theme(version = "5") |> 
-  bslib::bs_add_rules(sass::sass_file("app/styles/main.scss"))
+my_theme <- bs_theme(version = "5") |>
+  bs_add_rules(sass_file("app/styles/main.scss"))

@@ -6,7 +6,7 @@ box::use(
 )
 # Package imports
 box::use(
-  shiny[moduleServer, NS, bootstrapPage, tags, HTML],
+  shiny[bootstrapPage, moduleServer, NS, tags],
   shiny[observe],
 )
 
@@ -28,7 +28,7 @@ server <- function(id) {
   moduleServer(id, function(input, output, session) {
     data_list <- load_data$server("load_data")
     ids <- select_id$server("select_id", data_list)
-    
+
     observe({
       print(ids())
     })

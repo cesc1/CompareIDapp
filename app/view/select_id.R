@@ -5,8 +5,8 @@ box::use(
 # Package imports
 box::use(
   compareid[CompareID],
-  shiny[moduleServer, NS, tagList, tags],
   shiny[actionButton, bindEvent, icon, reactive, req],
+  shiny[moduleServer, NS, tagList, tags],
 )
 
 
@@ -37,21 +37,21 @@ ui <- function(id) {
 #' @export
 server <- function(id, data_list) {
   stopifnot(is.list(data_list))
-  
+
   moduleServer(id, function(input, output, session) {
     id1 <- select_column$server("select_column1", data_list$data1)
     id2 <- select_column$server("select_column2", data_list$data2)
-    
+
     compare_id_obj <- reactive({
       req(id1(), id2())
-      ids <- CompareID$new(
+      CompareID$new(
         data_list$data1(),
         data_list$data2(),
         c(id1(), id2())
       )
     }) |>
       bindEvent(input$calc_compareid)
-    
+
     compare_id_obj
   })
 }
